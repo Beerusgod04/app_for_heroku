@@ -4,7 +4,7 @@ import numpy as np
 import pydeck as pdk
 import plotly.express as px
 
-DATA_URL = ("C:Users\EKANSH\Desktop\Motor_Vehicle_Collisions_-_Crashes.csv")
+DATA_URL = ("https://data.cityofnewyork.us/Public-Safety/NYPD-Complaint-Data-Historic/qgea-i56i/data")
 
 st.title("Motor vehicle collisions in New York City")
 st.markdown("This application is a streamlit dashboared that can "
@@ -33,6 +33,7 @@ st.map(data.query("injured_persons >= @injured_people")[["latitude", "longitude"
 st.header("How many collisions occured during a given time of day?")
 hour = st.slider("Hour to look at", 0, 23)
 data = data[data['crash_date_crash_time'].dt.hour == hour]
+
 
 st.markdown("Vehicle Collisions between %i:00 and %i:00"%(hour,(hour + 1)% 24))
 
@@ -75,6 +76,7 @@ select = st.selectbox('Affected type of people',['Pedestrians','Cyclists','Motor
 
 if(select=='Pedestrians'):
     st.write(original_data.query("injured_pedestrians >= 1")[["on_street_name","injured_pedestrians"]].sort_values(by=['injured_pedestrians'],ascending=False).dropna(how="any")[:5])
+
 
 
 elif(select=='Cyclists'):
