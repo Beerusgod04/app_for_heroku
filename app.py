@@ -4,7 +4,8 @@ import numpy as np
 import pydeck as pdk
 import plotly.express as px
 
-DATA_URL = ("https://data.cityofnewyork.us/Public-Safety/NYPD-Complaint-Data-Historic/qgea-i56i/data")
+DATA_URL = ("https://data.cityofnewyork.us/Public-Safety/Motor-Vehicle-Collisions-Crashes/h9gi-nx95/data")
+st.markdown("EKANSH MISHRA VERSION 1.0")
 
 st.title("Motor vehicle collisions in New York City")
 st.markdown("This application is a streamlit dashboared that can "
