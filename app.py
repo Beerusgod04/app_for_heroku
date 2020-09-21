@@ -4,6 +4,19 @@ import numpy as np
 import pydeck as pdk
 import plotly.express as px
 
+
+page_bg_img = '''
+<style>
+body {
+background-image: url("https://images.unsplash.com/photo-1523130153792-04abc26b76be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
+background-size: cover;
+}
+</style>
+'''
+st.markdown(page_bg_img, unsafe_allow_html=True)
+
+
+
 DATA_URL = ("https://data.cityofnewyork.us/Public-Safety/Motor-Vehicle-Collisions-Crashes/h9gi-nx95/data")
 st.markdown("EKANSH MISHRA VERSION 1.0")
 
@@ -14,7 +27,7 @@ st.markdown("This application is a streamlit dashboared that can "
 
 @st.cache(persist=True)
 def load_data(nrows):
-    data = pd.read_csv(DATA_URL, nrows=nrows, parse_dates=[['CRASH_DATE', 'CRASH_TIME']])
+    data = pd.read_csv(DATA_URL, nrows=nrows)
     data.dropna(subset=['LATITUDE','LONGITUDE'], inplace=True)
     lowercase = lambda x: str(x).lower()
     data.rename(lowercase,axis='columns', inplace=True)
