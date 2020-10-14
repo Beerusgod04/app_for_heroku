@@ -14,7 +14,6 @@ import plotly.express as px
 #background-size: cover;
 #}
 #</style>
-'''
 #st.markdown(page_bg_img, unsafe_allow_html=True)
 
 
