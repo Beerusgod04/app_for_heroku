@@ -4,17 +4,15 @@ import numpy as np
 import pydeck as pdk
 import plotly.express as px
 
-#https://cdn.pixabay.com/photo/2014/08/01/15/51/manhattan-407703_1280.jpg       (Manhttan pic)
-#https://images.unsplash.com/photo-1523130153792-04abc26b76be?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80                     (silloute pic of statue of liberty)
-#https://cdn.pixabay.com/photo/2016/01/19/18/00/city-1150026_1280.jpg            (urban city street)
-#page_bg_img = '''
-#<style>
-#body {
-#background-image: url("https://cdn.pixabay.com/photo/2014/08/01/15/51/manhattan-407703_1280.jpg");
-#background-size: cover;
-#}
-#</style>
-#st.markdown(page_bg_img, unsafe_allow_html=True)
+
+page_bg_img = '''
+<style>
+body {
+background-image: url("https://images.pexels.com/photos/1762851/pexels-photo-1762851.jpeg?cs=srgb&dl=pexels-ann-h-1762851.jpg&fm=jpg");
+background-size: cover;
+}
+</style>
+st.markdown(page_bg_img, unsafe_allow_html=True)
 
 
 
@@ -28,7 +26,7 @@ st.markdown("This application is a streamlit dashboared that can "
 
 @st.cache(persist=True)
 def load_data(nrows):
-    data = pd.read_csv(DATA_URL, error_bad_lines=False, nrows=nrows,parse_dates=[['CRASH DATE', 'CRASH TIME']])
+    data = pd.read_csv(DATA_URL, error_bad_lines=False, nrows=nrows,parse_dates=[['crash_date', 'crash_time']])
     data.dropna(subset=['LATITUDE','LONGITUDE'], inplace=True)
     lowercase = lambda x: str(x).lower()
     data.rename(lowercase,axis='columns', inplace=True)
